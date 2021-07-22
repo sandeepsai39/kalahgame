@@ -18,7 +18,6 @@ import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.IntStream;
 
 @RestController
 public class KalahGameController {
@@ -29,6 +28,11 @@ public class KalahGameController {
         this.service = service;
     }
 
+    /**
+     * Create a new Game and returns Game ID
+     * @return HTTP Status code, JSON representation of data contains game id, game URI
+     * or errorCode and errorMessage for negative scenarios.
+     */
     @PostMapping(path = "/games", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<KalahGameResponse> startGame(){
@@ -45,6 +49,15 @@ public class KalahGameController {
                 id(gameId).url(selfUri.toString()).build());
     }
 
+    /**
+     * Make a move for the gameId and pitId path variables.
+     * @param gameId Id of created game
+     * @param pitId  pitId where user wants to start game
+     * @return Response with HTTP Status, with JSON representation of data containing game GameId, Game URL
+     * status: json object key-value, where key is the pitId and value is the number of stones in the pit or
+     * errorCode and errorMessage in negative scenarios.
+     * @throws KalahGameException
+     */
     @PutMapping(path = "/games/{gameId}/pits/{pitId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     @SneakyThrows
     public ResponseEntity<MakeMoveResponse> makeMove(@PathVariable("gameId") Integer gameId, @PathVariable("pitId") Integer pitId){
