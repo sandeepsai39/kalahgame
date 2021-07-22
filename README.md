@@ -5,6 +5,12 @@ For further reference, please consider the following sections:
 
 * [Kalah Game on Github](https://github.com/sandeepsai39/kalahgame)
 
+### Prerequisites
+   * IntellJ or Equivalent IDE
+   * Java 8 ,Spring Boot 2 or later
+   * Junit 5 ,MockItTo and MockMVC(For Unit testing)
+   * Maven or Gradle
+
 ### Guides
 The following guides illustrate how to use some features concretely:
 * [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
@@ -12,7 +18,7 @@ The following guides illustrate how to use some features concretely:
 * [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
 
 ### Rest API Documentation for Kalah Game  
-The OpenAPP/Swagger documentation available on https://github.com/sandeepsai39/kalahgame/kalahsixstone/src/main/resources/openapi.yaml 
+The OpenAPI/Swagger documentation available at kalahsixstone/src/main/resources/openapi.yaml 
 
 ### Game Specification and Design
 #### Endpoint design specification
@@ -37,7 +43,7 @@ The OpenAPP/Swagger documentation available on https://github.com/sandeepsai39/k
      are stored in "kalahstatus" table.
       
       Note: For DB details(For POC using In memory H2 DB ) please refer 
-      https://github.com/sandeepsai39/kalahgame/kalahsixstone/src/main/resources/schema.sql
+      kalahsixstone/src/main/resources/schema.sql
    * Once Game is created successfully, refer second step. 
 
 2. Make a move:
@@ -60,3 +66,16 @@ The OpenAPP/Swagger documentation available on https://github.com/sandeepsai39/k
        Error Response Body: With wrong game Id as parameter
        HTTP Code 404,
        {"erorCode": "404", "errorMessage": "Game not Created""}
+
+### Building and Running Application
+   * Navigate to project root and run command "mvn clean install".
+   * Run application using "java -jar kalahsixstone.jar"
+
+### Troubleshooting
+   * possible errors and trouble shoot the application if any
+
+### Server Details
+   #### company server details.  
+
+### Contact and Support
+  #### Contact Details of development and environment team details.
