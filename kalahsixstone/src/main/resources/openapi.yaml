@@ -1,0 +1,101 @@
+openapi: 3.0.1
+info:
+  version: 1.0.0
+  title: Kalah Six Stone Spring Boot application
+  description: Kalah Six stone game application implementation using Rest API
+  contact:
+    name: Kalah
+    url: 'http://kalahsample/contact'
+    email: kalahsamle@xxx.com
+servers:
+  - url: 'http://localhost:8080'
+    description: Local server on port 8080
+paths:
+  '/games/{gameId}/pits/{pitId}':
+    put:
+      tags:
+        - kalah-game-controller
+      description: Make a Move
+      operationId: makeMove
+      parameters:
+        - name: gameId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: pitId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Make a move response key value pair, where key is the pitId and the values '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MakeMoveResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /games:
+    post:
+      tags:
+        - kalah-game-controller
+      description: Create Kalah Six Stone Game
+      operationId: startGame
+      responses:
+        '200':
+          description: Kalah Game Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KalahGameResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+components:
+  schemas:
+    MakeMoveResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        status:
+          type: object
+          additionalProperties:
+            type: string
+    ApiError:
+      type: object
+      properties:
+        errorCode:
+          type: string
+        errorMessage:
+          type: string
+    KalahGameResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
